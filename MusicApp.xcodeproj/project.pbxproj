@@ -15,6 +15,7 @@
 		671D7D3824C20F030088A448 /* song1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671D7D3524C20F010088A448 /* song1.mp3 */; };
 		671D7D3924C20F030088A448 /* song2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671D7D3624C20F020088A448 /* song2.mp3 */; };
 		671D7D3A24C20F030088A448 /* song3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671D7D3724C20F030088A448 /* song3.mp3 */; };
+		671D7D3C24C25E690088A448 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671D7D3B24C25E680088A448 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		671D7D3524C20F010088A448 /* song1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song1.mp3; sourceTree = "<group>"; };
 		671D7D3624C20F020088A448 /* song2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song2.mp3; sourceTree = "<group>"; };
 		671D7D3724C20F030088A448 /* song3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song3.mp3; sourceTree = "<group>"; };
+		671D7D3B24C25E680088A448 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				671D7D2924C207990088A448 /* Assets.xcassets */,
 				671D7D2B24C207990088A448 /* LaunchScreen.storyboard */,
 				671D7D2E24C207990088A448 /* Info.plist */,
+				671D7D3B24C25E680088A448 /* PlayerViewController.swift */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			files = (
 				671D7D2524C207980088A448 /* ViewController.swift in Sources */,
 				671D7D2324C207980088A448 /* AppDelegate.swift in Sources */,
+				671D7D3C24C25E690088A448 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
