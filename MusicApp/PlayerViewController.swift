@@ -48,11 +48,10 @@ class PlayerViewController: UIViewController {
         return label
     }()
     
+    let playPauseButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -71,11 +70,9 @@ class PlayerViewController: UIViewController {
         
         do {
             
-          try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, mode: AVAudioSessionModeDefault, options: [.mixWithOthers, .allowAirPlay])
-          try  AVAudioSession.sharedInstance().setActive(true, with: .notifyOthersOnDeactivation)
-            
+          try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+          try  AVAudioSession.sharedInstance().setActive(true)
             guard let urlString = urlString else {
-                
                 print("urlstring is nil")
                 return
             }
@@ -131,20 +128,44 @@ class PlayerViewController: UIViewController {
         holder.addSubview(artistNameLabel)
         
         //Player controls
-        let playPauseButton = UIButton()
         let nextButton = UIButton()
         let backButton = UIButton()
         
+        //Frame
+        let yPosition = artistNameLabel.frame.origin.y + 70 + 20
+        let size: CGFloat =  70
+        
+        playPauseButton.frame = CGRect(x: (holder.frame.size.width - size) / 2.0,
+                                       y: yPosition,
+                                       width: size,
+                                       height: size)
+        
+        nextButton.frame = CGRect(x:holder.frame.size.width - size - 20,
+                                       y: yPosition,
+                                       width: size,
+                                       height: size)
+        
+        backButton.frame = CGRect(x: 20,
+                                       y: yPosition,
+                                       width: size,
+                                       height: size)
+        
+        
+        
+        //Add actions
+        playPauseButton.addTarget(self, action: #selector(didTapPlayButton), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         
         
         //Styling
-        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
-        backButton.setBackgroundImage(UIImage(systemName: "back.fill"), for: .normal)
-        nextButton.setBackgroundImage(UIImage(systemName: "forward.fill"), for: .normal)
+        playPauseButton.setBackgroundImage(UIImage(named: "play.fill"), for: .normal)
+        backButton.setBackgroundImage(UIImage(named: "backward.fill"), for: .normal)
+        nextButton.setBackgroundImage(UIImage(named: "forward.fill"), for: .normal)
         
-        playPauseButton.tintColor = .black
-        backButton.tintColor = .black
-        nextButton.tintColor = .black
+        playPauseButton.tintColor = UIColor.red
+        backButton.tintColor = UIColor.red
+        nextButton.tintColor = UIColor.red
         
         holder.addSubview(playPauseButton)
         holder.addSubview(nextButton)
@@ -162,15 +183,66 @@ class PlayerViewController: UIViewController {
         holder.addSubview(slider)
     }
     
-    @objc func didSlideSlider(_ slider: UISlider) {
-        let value = slider.value
-        player?.volume = value
-        
-      
+     @objc func didTapBackButton() {
+        if position > 0 {
+            position = position - 1
+            player?.stop()
+            for subview in holder.subviews {
+                subview.removeFromSuperview()
+            }
+            configure()
+        }
         
     }
+     @objc func didTapNextButton() {
+        if position < (songs.count - 1) {
+            position = position + 1
+            player?.stop()
+            for subview in holder.subviews {
+                subview.removeFromSuperview()
+            }
+            configure()
+        }
+    }
+     @objc func didTapPlayButton() {
+        if player?.isPlaying == true {
+            //pause
+            player?.pause()
+            //show play button
+             playPauseButton.setBackgroundImage(UIImage(named: "play.fill"), for: .normal)
+            
+            //shrink image
+            UIView.animate(withDuration: 0.2, animations: {
+                self.albumImageView.frame = CGRect(x: 30,
+                                                   y: 30,
+                                                   width: self.holder.frame.size.width-60,
+                                                   height: self.holder.frame.size.width-60)
+            })
+            
+        }
+     else {
+            //play
+            player?.play()
+             playPauseButton.setBackgroundImage(UIImage(named: "pause.fill"), for: .normal)
+            
+            //increase image size
+            UIView.animate(withDuration: 0.2, animations: {
+                self.albumImageView.frame = CGRect(x: 10,
+                                                   y: 10,
+                                                   width: self.holder.frame.size.width-20,
+                                                   height: self.holder.frame.size.width-20)
+            })
+        }
     
-    override func viewWillDisappear(_ animated: Bool) {
+}
+    
+@objc func didSlideSlider(_ slider: UISlider) {
+        let value = slider.value
+        player?.volume = value
+    
+    }
+    
+ override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if let player = player {
             player.stop()
