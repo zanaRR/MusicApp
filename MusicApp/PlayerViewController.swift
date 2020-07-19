@@ -9,6 +9,7 @@
 import AVFoundation
 import UIKit
 
+
 class PlayerViewController: UIViewController {
 
     public var position: Int = 0
@@ -71,7 +72,7 @@ class PlayerViewController: UIViewController {
         do {
             
           try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-          try  AVAudioSession.sharedInstance().setActive(true)
+          try AVAudioSession.sharedInstance().setActive(true)
             guard let urlString = urlString else {
                 print("urlstring is nil")
                 return

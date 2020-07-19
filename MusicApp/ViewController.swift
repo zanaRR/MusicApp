@@ -24,50 +24,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func configureSongs() {
         songs.append(Song(name: "Bailando",
-                          albumName: "Bailandos",
+                          albumName: "Vivir",
                           artistName: "Enrique Iglesias",
                           imageName: "cover1",
                           trackName: "song1"))
         songs.append(Song(name: "Vamos pa la playa",
-                          albumName: "Playa",
+                          albumName: "Escape",
                           artistName: "Pedro Capo",
                           imageName: "cover2",
-                          trackName: "song3"))
+                          trackName: "song2"))
         songs.append(Song(name: "Savage Love",
-                          albumName: "Savage",
+                          albumName: "Tattoos",
                           artistName: "Jason Derulo",
                           imageName: "cover3",
                           trackName: "song3"))
-        songs.append(Song(name: "Bailando",
-                          albumName: "Bailandos",
-                          artistName: "Enrique Iglesias",
-                          imageName: "cover1",
-                          trackName: "song1"))
-        songs.append(Song(name: "Vamos pa la playa",
-                          albumName: "Playa",
-                          artistName: "Pedro Capo",
-                          imageName: "cover2",
-                          trackName: "song3"))
-        songs.append(Song(name: "Savage Love",
-                          albumName: "Savage",
-                          artistName: "Jason Derulo",
-                          imageName: "cover3",
-                          trackName: "song3"))
-        songs.append(Song(name: "Bailando",
-                          albumName: "Bailandos",
-                          artistName: "Enrique Iglesias",
-                          imageName: "cover1",
-                          trackName: "song1"))
-        songs.append(Song(name: "Vamos pa la playa",
-                          albumName: "Playa",
-                          artistName: "Pedro Capo",
-                          imageName: "cover2",
-                          trackName: "song3"))
-        songs.append(Song(name: "Savage Love",
-                          albumName: "Savage",
-                          artistName: "Jason Derulo",
-                          imageName: "cover3",
-                          trackName: "song3"))     }
+        songs.append(Song(name: "Yellow",
+                          albumName: "Parachutes",
+                          artistName: "Coldplay",
+                          imageName: "cover4",
+                          trackName: "song4"))
+        songs.append(Song(name: "Perfect",
+                          albumName: "Divide",
+                          artistName: "Ed Sheeran",
+                          imageName: "cover5",
+                          trackName: "song5"))
+        songs.append(Song(name: "Someone like you",
+                          albumName: "21",
+                          artistName: "Adele",
+                          imageName: "cover6",
+                          trackName: "song6"))
+            }
    //Table
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
